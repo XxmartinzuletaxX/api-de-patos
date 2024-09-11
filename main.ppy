@@ -1,0 +1,21 @@
+
+
+def get_duck_image_url():    
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+
+@bot.command('duck')
+async def duck(ctx):
+    '''Una vez que llamamos al comando duck, 
+    el programa llama a la función get_duck_image_url'''
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
+
+@bot.command()
+async def meme_programacion(ctx):
+    with open("C:/Users/willz/Downloadsmem1.jpg", "rb") as f:
+        picture = discord.File(f)
+    await ctx.send(file=picture)
